@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import AsideFilters from './components/aside-filter/AsideFilters';
-import GameList from './components/game-list/GameList';
-import Header from './components/header/Header';
+import Filters from './components/Filters';
+import GameList from './components/GameList';
+import Header from './components/Header';
 import { URLS } from './constants/api';
 import { useFetch } from './hooks/useFetch';
 import { useFilters } from './hooks/useFilters';
-import { GlobalStyles } from './styles/GlobalStyles';
 
 const App = () => {
 	const [orderBy, setOrderBy] = useState('0');
@@ -43,20 +42,21 @@ const App = () => {
 	const filteredGames = sortedBy(games?.results, orderBy);
 
 	return (
-		<>
-			<GlobalStyles />
+		<div className='bg-gray-400 h-screen'>
 			<Header setSearch={setSearch} />
-			<AsideFilters
-				setOrderBy={setOrderBy}
-				platforms={platforms}
-				genres={genres}
-				genreSelected={genreSelected}
-				setGenre={setGenre}
-				platformSelected={platformSelected}
-				setPlatform={setPlatform}
-			/>
-			<GameList games={filteredGames} />
-		</>
+			<div className='px-8'>
+				<Filters
+					setOrderBy={setOrderBy}
+					platforms={platforms}
+					genres={genres}
+					genreSelected={genreSelected}
+					setGenre={setGenre}
+					platformSelected={platformSelected}
+					setPlatform={setPlatform}
+				/>
+				<GameList games={filteredGames} />
+			</div>
+		</div>
 	);
 };
 //* Función obtener api según parámetros:
