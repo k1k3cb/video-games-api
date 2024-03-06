@@ -2,25 +2,33 @@ import { useEffect, useState } from 'react';
 import AsideFilters from './components/aside-filter/AsideFilters';
 import GameList from './components/game-list/GameList';
 import Header from './components/header/Header';
-import { url, urlPlatforms, urlSearch } from './constants/api';
+import { URLS } from './constants/api';
 import { useFetch } from './hooks/useFetch';
 import { GlobalStyles } from './styles/GlobalStyles';
 
 const App = () => {
 	const [orderBy, setOrderBy] = useState('0');
-	const [search, setSearch] = useState('');
-	const [searchResults, setSearchResults] = useState([]);
+	const [gameFilters, setGameFilters] = useState({
+		search: '',
+		genreSelected: 'All',
+		platformSelected: 'All'
+	});
+
+	const { search, genreSelected, platformSelected } = gameFilters;
+
+	const [genres, setGenres] = useState(['']);
 	const [platforms, setPlatforms] = useState([]);
-	const urlToFetch = search ? urlSearch + search : url;
+	const urlToFetch = urlToUse(search, genreSelected, platformSelected);
 
-	
-
-	useEffect(() => {
-		fetchSearchResults(search, setSearchResults);
-	}, [search]);
+	console.log('urlToFetch', urlToFetch);
+	console.log('platformSelected', platformSelected);
 
 	useEffect(() => {
 		fetchGetAllPlatforms(setPlatforms);
+	}, []);
+
+	useEffect(() => {
+		fetchGetAllGenres(setGenres);
 	}, []);
 
 	const { data: games, loading, error } = useFetch(urlToFetch);
@@ -40,31 +48,48 @@ const App = () => {
 		<>
 			<GlobalStyles />
 			<Header setSearch={setSearch} />
-			<AsideFilters setOrderBy={setOrderBy} platforms={platforms} />
-			<GameList games={filteredGames} searchResults={searchResults} />
+			<AsideFilters
+				setOrderBy={setOrderBy}
+				platforms={platforms}
+				genres={genres}
+				genreSelected={genreSelected}
+				setGenreSelected={setGenreSelected}
+				platformSelected={platformSelected}
+				setPlatformSelected={setPlatformSelected}
+			/>
+			<GameList games={filteredGames} />
 		</>
 	);
 };
+//* Función obtener api según parámetros:
 
-//* Función búsqueda juego a través de la api
-
-const fetchSearchResults = async (search, setSearchResults) => {
-	try {
-		const response = await fetch(urlSearch + search);
-		const data = await response.json();
-		setSearchResults(data.results);
-	} catch (error) {
-		console.error('Error fetching search results:', error);
-	}
+const urlToUse = (search, genreSelected, platformSelected) => {
+	if (genreSelected !== 'All') return URLS.GENRES + `/${genreSelected}`;
+	if (platformSelected !== 'All')
+		return URLS.GAMES_BY_PLATFORM + platformSelected;
+	if (!search) return URLS.ALL_GAMES;
+	return URLS.SEARCH + search;
 };
 
 //* Función obtener plataformas juego desde la api:
 
 const fetchGetAllPlatforms = async setPlatforms => {
 	try {
-		const response = await fetch(urlPlatforms);
+		const response = await fetch(URLS.PLATFORMS);
 		const data = await response.json();
 		setPlatforms(data.results);
+	} catch (error) {
+		console.error('Error fetching search results:', error);
+	}
+};
+
+//* Función obtener los géneros de los juego desde la api:
+
+const fetchGetAllGenres = async setGenres => {
+	try {
+		const response = await fetch(URLS.GENRES);
+		const data = await response.json();
+		setGenres(data.results);
 	} catch (error) {
 		console.error('Error fetching search results:', error);
 	}
@@ -73,19 +98,11 @@ const fetchGetAllPlatforms = async setPlatforms => {
 //* Función ordenar: según la opción del select ordeno los juegos
 
 const sortedBy = (games, orderBy) => {
-	const sortedGames = games;
-
-	console.log('orderBy', orderBy);
+	const sortedGames = [...games];
 	if (orderBy === '0') return sortedGames;
-	else if (orderBy === '1')
-		return sortedGames.sort((a, b) => a.name.localeCompare(b.name));
+	return sortedGames.sort((a, b) => a.name.localeCompare(b.name));
 };
-
-
 
 export default App;
 
-// Buscador de videojuegos (por nombre)
-// Filtro por plataforma
-// Filtro por género
 // Vista de detalles del juego

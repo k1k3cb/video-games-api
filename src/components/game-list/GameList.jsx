@@ -1,4 +1,4 @@
-const GameList = ({ games,searchResults }) => {
+const GameList = ({ games }) => {
 	
 
 

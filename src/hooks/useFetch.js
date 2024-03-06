@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchData } from '../utils/fetch-data';
 
 export const useFetch = url => {
+	console.log('usefectch');
 
 	const [fetchStatus, setFetchStatus] = useState({
 		data: undefined,
