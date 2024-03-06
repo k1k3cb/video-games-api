@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import { fetchData } from '../utils/fetch-data';
 
 export const useFetch = url => {
-	console.log('usefectch');
-
 	const [fetchStatus, setFetchStatus] = useState({
 		data: undefined,
 		loading: true,
@@ -12,10 +10,14 @@ export const useFetch = url => {
 
 	useEffect(() => {
 		const controller = new AbortController();
+		const timeoutId = setTimeout(() => {
+			fetchData(url, setFetchStatus, controller.signal);
+		}, 300);
 
-		fetchData(url, setFetchStatus, controller.signal);
-
-		return () => controller.abort();
+		return () => {
+			controller.abort();
+			clearTimeout(timeoutId);
+		};
 	}, [url]);
 
 	return { ...fetchStatus };
