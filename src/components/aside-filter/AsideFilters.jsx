@@ -5,9 +5,9 @@ const AsideFilters = ({
 	platforms,
 	genres,
 	genreSelected,
-	setGenreSelected,
+	setGenre,
 	platformSelected,
-	setPlatformSelected
+	setPlatform
 }) => {
 	const gamesPlatforms = getAllPlatforms(platforms);
 	const gamesGenres = getAllGenres(genres);
@@ -20,7 +20,7 @@ const AsideFilters = ({
 			</select>
 			<select
 				value={platformSelected}
-				onChange={event => handlePlatform(event, setPlatformSelected)}
+				onChange={event => handlePlatform(event, setPlatform)}
 			>
 				<option value='All'>All</option>
 				{gamesPlatforms.map(gamesPlatform => (
@@ -32,7 +32,7 @@ const AsideFilters = ({
 
 			<select
 				value={genreSelected}
-				onChange={event => handleGenre(event, setGenreSelected)}
+				onChange={event => handleGenre(event, setGenre)}
 			>
 				<option value='All'>All</option>
 				{gamesGenres.map(gamesGenre => (
