@@ -17,7 +17,7 @@ const Header = ({ setSearch }) => {
 
 const handleSearchChange = (event, setSearch) => {
 	setSearch(event.target.value);
-	console.log(event.target.value)
+	
 };
 
 export default Header;

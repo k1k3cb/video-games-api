@@ -1,8 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
   *,
   *::after,
   *::before{
@@ -16,7 +15,11 @@ export const GlobalStyles = createGlobalStyle`
   
   body{
     margin: 0;
-    font-family: sans-serif;
+    font-family: "Lato", sans-serif;
+  }
+ 
+ h1,h2{
+    font-family: "Righteous", sans-serif;
   }
 
   a{
