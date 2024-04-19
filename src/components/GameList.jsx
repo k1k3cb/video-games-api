@@ -10,11 +10,7 @@ const GameList = ({ games }) => {
 					<GameCard game={game} key={game.id} />
 				))}
 			</div>
-			<div className='mx-auto mb-6 flex justify-center'>
-				<button>Adelante</button>
-				<button>Atrás</button>
-			</div>
-			{/* <Pagination/> */}
+			
 		</>
 	);
 };

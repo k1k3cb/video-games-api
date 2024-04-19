@@ -100,5 +100,4 @@ const sortedBy = (games, orderBy) => {
 
 export default Home;
 
-// paginacion
-// subir a render
+
