@@ -1,11 +1,11 @@
 # Video Games Api
 
-![Imagen del proyecto](https://github.com/k1k3cb/administrador-clientes/blob/main/public/screenShoot1.png)
+![Imagen del proyecto](https://raw.githubusercontent.com/k1k3cb/video-games-api/main/public/assets/images/img1.webp)
 
 ## Ejemplo en vivo
  
 
-- [Enlace al proyecto](video-games-api-79xy.onrender.com/)
+- [Enlace al proyecto](https://video-games-api-79xy.onrender.com/)
 
 
 ## Descripción 📑
@@ -16,9 +16,11 @@ Desarrollo de una web donde consultar información sobre videojuegos, pudiendo s
 
 ## ¿Qué he aprendido en este proyecto? 🙇🏻
 
-Usar [React Router ](https://reactrouter.com/en/main)  para gestionar rutas .
-Consulta de un api [RAWG ](https://rawg.io/) para hacer el fetching de datos.
-Creación de distintos filtros para realizar busquedas y ordenarlas.
+- Usar [React Router ](https://reactrouter.com/en/main)  para gestionar rutas .
+
+- Consulta de un api [RAWG ](https://rawg.io/) para hacer el fetching de datos.
+
+- Creación de distintos filtros para realizar búsquedas y ordenarlas.
 
 ## Tecnologías 🛠
 
@@ -40,8 +42,7 @@ Creación de distintos filtros para realizar busquedas y ordenarlas.
 
 Si quieres echar un vistazo al proyecto, te recomiendo:
 
-![Captura del proyecto](https://github.com/k1k3cb/administrador-clientes/blob/main/public/screenShoot2.png)
-![Captura del proyecto](https://github.com/k1k3cb/administrador-clientes/blob/main/public/screenShoot3.png)
+![Captura del proyecto](https://raw.githubusercontent.com/k1k3cb/video-games-api/main/public/assets/images/img2.webp)
 
 
 
@@ -51,10 +52,11 @@ Si quieres echar un vistazo al proyecto, te recomiendo:
 ## Autor ✒️
 
 **ENRIQUE COMESAÑA**
+ 
 
-  [![GMAIL](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:enriquecbardev@gmail.com)
+  [![Email](https://img.shields.io/badge/Email-333333?style=for-the-badge&logo=email&logoColor=white)](mailto:contacto@enriquecomesana.dev)
 
-- [contacto@enriquecomesana.dev](contacto@enriquecomesana.dev)
+
 - [LinkedIn](https://www.linkedin.com/in/enrique-comesa%c3%b1a-312500268/)
 - [Porfolio web](https://enriquecomesana.dev/)
 
@@ -62,8 +64,8 @@ Si quieres echar un vistazo al proyecto, te recomiendo:
 
 Este proyecto para su instalación necesitas usar los siguientes comandos:
 
--npm install <br>
--npm run dev<br>
+- npm install <br>
+- npm run dev<br>
 
 
 Si solamente quieres verlo debes usar el comando *npm run preview*
